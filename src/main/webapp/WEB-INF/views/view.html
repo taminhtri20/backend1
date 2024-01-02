@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Product</h3>
+<p>
+    <a th:href="@{/products}">
+        Back to list product
+    </a>
+</p>
+<div id="detail">
+    <div class="cus-detail">
+        <label>Name:</label>
+        <label th:text="${product.name}"></label>
+    </div>
+    <div class="cus-detail">
+        <label>Price:</label>
+        <label th:text="${product.price}"></label>
+    </div>
+    <div class="cus-detail">
+        <label>Descripsion:</label>
+        <label th:text="${product.description}"></label>
+    </div>
+    <div class="cus-detail">
+        <label>Origin:</label>
+        <label th:text="${product.origin}"></label>
+    </div>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

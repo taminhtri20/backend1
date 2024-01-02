@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>List product</h3>
+<div>
+    <p>
+        <a th:href="@{/products/create}">
+            Add new product
+        </a>
+    </p>
+    <form th:action="@{/products/search}" method="post" novalidate="novalidate">
+        <input type="search" placeholder="searching in here" name="searchMSG">
+        <input type="submit" value="search">
+    </form>
+</div>
+<table id="products">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Origin</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,rowStat : ${productList}">
+        <td>
+            <a th:text="${row.name}" th:href="@{/products/{id}/view(id=${row.id})}">
+            </a>
+        </td>
+        <td th:text="${row.price}"></td>
+        <td th:text="${row.description}"></td>
+        <td th:text="${row.origin}"></td>
+        <td>
+            <a th:href="@{/products/{id}/edit(id=${row.id})}">
+                Edit
+            </a>
+        </td>
+        <td>
+            <a th:href="@{/products/{id}/delete(id=${row.id})}">
+                Delete
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
